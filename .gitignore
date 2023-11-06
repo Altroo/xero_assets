@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+xero_project/__pycache__
