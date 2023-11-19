@@ -979,3 +979,334 @@ Traceback (most recent call last):
     raise RuntimeError('Missing "authorize_url" value')
 RuntimeError: Missing "authorize_url" value
 "GET /xero/login/ HTTP/1.1" 500 108657
+Not Found: /
+"GET / HTTP/1.1" 404 2392
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Forbidden: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 403 45
+Forbidden: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 403 58
+Forbidden: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 403 58
+Forbidden: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 403 58
+Forbidden: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 403 58
+Internal Server Error: /fixed-assets/asset-settings/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 500 86354
+Forbidden: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 403 58
+Unauthorized: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 401 183
+Internal Server Error: /fixed-assets/asset-settings/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 500 86456
+Internal Server Error: /fixed-assets/asset-settings/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 500 86456
+Internal Server Error: /fixed-assets/asset-settings/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 500 86456
+Internal Server Error: /fixed-assets/asset-settings/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 12, in post
+    request_data = {
+TypeError: 'int' object is not a mapping
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 500 99010
+Internal Server Error: /fixed-assets/asset-settings/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 11, in post
+    request_data = {
+TypeError: 'int' object is not a mapping
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 500 98983
+Internal Server Error: /fixed-assets/asset-settings/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 500 86456
+Internal Server Error: /fixed-assets/asset-settings/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 500 86456
+Unauthorized: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 401 183
+Bad Request: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 400 122
+Bad Request: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 400 36
+Bad Request: /fixed-assets/asset-settings/
+"POST /fixed-assets/asset-settings/ HTTP/1.1" 400 57
+Unauthorized: /fixed-assets/asset-settings/
+"GET /fixed-assets/asset-settings/ HTTP/1.1" 401 183
+Unauthorized: /fixed-assets/asset-settings/
+"GET /fixed-assets/asset-settings/ HTTP/1.1" 401 183
+Internal Server Error: /auth/login/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\dj_rest_auth\views.py", line 48, in dispatch
+    return super().dispatch(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\dj_rest_auth\views.py", line 127, in post
+    self.login()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\auth\views.py", line 6, in login
+    super(LoginView, self).login()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\dj_rest_auth\views.py", line 70, in login
+    self.access_token, self.refresh_token = jwt_encode(self.user)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\dj_rest_auth\utils.py", line 14, in jwt_encode
+    refresh = JWTTokenClaimsSerializer.get_token(user)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework_simplejwt\serializers.py", line 66, in get_token
+    return cls.token_class.for_user(user)  # type: ignore
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework_simplejwt\tokens.py", line 207, in for_user
+    token = cls()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework_simplejwt\tokens.py", line 67, in __init__
+    self.set_exp(from_time=self.current_time, lifetime=self.lifetime)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework_simplejwt\tokens.py", line 162, in set_exp
+    self.payload[claim] = datetime_to_epoch(from_time + lifetime)
+TypeError: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+"POST /auth/login/ HTTP/1.1" 500 137895
+Not Found: /favicon.ico
+Not Found: /
+"GET / HTTP/1.1" 404 2505
+Bad Request: /fixed-assets/asset-settings/
+"PATCH /fixed-assets/asset-settings/ HTTP/1.1" 400 36
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 50
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Bad Request: /fixed-assets/asset-types/
+"POST /fixed-assets/asset-types/ HTTP/1.1" 400 51
+Not Found: /fixed-assets/asset-types/3/
+"GET /fixed-assets/asset-types/3/ HTTP/1.1" 404 51
+Bad Request: /fixed-assets/asset-types/
+"PATCH /fixed-assets/asset-types/ HTTP/1.1" 400 40
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Bad Request: /fixed-assets/assets/
+"POST /fixed-assets/assets/ HTTP/1.1" 400 382
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 206, in patch
+    assets.save()
+AttributeError: 'QuerySet' object has no attribute 'save'
+"PATCH /fixed-assets/assets/ HTTP/1.1" 500 99796
+Internal Server Error: /admin/fixed_assets/asset/2/change/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\options.py", line 1855, in _changeform_view
+    "subtitle": str(obj) if obj else None,
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\models.py", line 144, in __str__
+    return '{} - {} - {}'.format(self.name, self.rate, self.effective_life)
+AttributeError: 'Asset' object has no attribute 'name'
+"GET /admin/fixed_assets/asset/2/change/ HTTP/1.1" 500 119431
+Internal Server Error: /admin/fixed_assets/asset/2/change/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\contrib\admin\options.py", line 1855, in _changeform_view
+    "subtitle": str(obj) if obj else None,
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\models.py", line 144, in __str__
+    return '{} - {} - {}'.format(self.name, self.rate, self.effective_life)
+AttributeError: 'Asset' object has no attribute 'name'
+"GET /admin/fixed_assets/asset/2/change/ HTTP/1.1" 500 119431
+Bad Request: /fixed-assets/assets/
+"POST /fixed-assets/assets/ HTTP/1.1" 400 65

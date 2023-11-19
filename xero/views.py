@@ -51,7 +51,7 @@ api_client = ApiClient(
 #     ],
 #     "token_type": "Bearer"
 # }
-api_client.set_oauth2_token("YOUR ACCESS TOKEN")
+# api_client.set_oauth2_token("YOUR ACCESS TOKEN")
 
 
 class AssetView(APIView):

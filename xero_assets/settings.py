@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from os import path
+from datetime import timedelta
 from pathlib import Path
 from decouple import config
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'dj_rest_auth.registration',
     'auth.apps.AuthConfig',
+    'fixed_assets.apps.FixedAssetsConfig'
 ]
 
 MIDDLEWARE = [
@@ -145,6 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Rest framework config
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        "dj_rest_auth.jwt_auth.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ),
     'DEFAULT_PERMISSION_CLASSES': (
@@ -168,6 +171,20 @@ REST_AUTH = {
     'OLD_PASSWORD_FIELD_ENABLED': True,
     'JWT_AUTH_HTTPONLY': False,
 }
+
+# SIMPLE_JWT
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(365),
+    'BLACKLIST_AFTER_ROTATION': False,
+    'ROTATE_REFRESH_TOKENS': True,
+}
+
+# # Simple_jwt config
+# ACCESS_TOKEN_LIFETIME=60
+# REFRESH_TOKEN_LIFETIME=365
+# BLACKLIST_AFTER_ROTATION=False
+# ROTATE_REFRESH_TOKENS=True
 
 # ACCOUNT settings (dj_rest_auth & allauth)
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
