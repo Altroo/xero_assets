@@ -218,9 +218,11 @@ class AssetsView(APIView):
         user = request.user
         asset_pk: Union[int, str] = request.data.get('asset_pk')
         asset_status: str = request.data.get('asset_status')
-        asset_pks_list = str(asset_pk).split(',')
-        Asset.objects.filter(user=user, pk__in=asset_pks_list).update(asset_status=asset_status)
-        return Response(status=status.HTTP_200_OK)
+        # Edit only as Registered and Draft
+        if asset_status != 'DI':
+            asset_pks_list = str(asset_pk).split(',')
+            Asset.objects.filter(user=user, pk__in=asset_pks_list).update(asset_status=asset_status)
+            return Response(status=status.HTTP_200_OK)
 
     @staticmethod
     def delete(request, *args, **kwargs):
