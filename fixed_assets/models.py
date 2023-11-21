@@ -59,6 +59,7 @@ class AccountType:
 
 
 class AssetAccount(Model):
+    account_name = CharField(verbose_name='Account name', max_length=255, blank=True, null=True, default=None)
     account_type_code = CharField(verbose_name='Account Type code', max_length=15, unique=True)
     tax = CharField(verbose_name='Tax', choices=AccountType.TAX_CHOICES, default='ES', max_length=2)
 

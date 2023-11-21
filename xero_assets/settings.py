@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters',
     'dj_rest_auth',
     'allauth',
     'allauth.account',
@@ -159,6 +160,7 @@ REST_FRAMEWORK = {
         "rest_framework.renderers.JSONRenderer",
     ),
     'DEFAULT_SCHEMA_CLASS': "rest_framework.schemas.coreapi.AutoSchema",
+    'DEFAULT_FILTER_BACKEND': ("django_filters.rest_framework.DjangoFilterBackend",),
     'TOKEN_MODEL': None,
 }
 

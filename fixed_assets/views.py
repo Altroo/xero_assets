@@ -1,13 +1,15 @@
-from typing import Union
+from typing import Union, Dict
 
 from django.db.models import QuerySet
-from django.http import HttpRequest
+from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework import permissions, status
 from rest_framework.exceptions import ValidationError, NotFound
+from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import AssetSettingSerializer, AssetTypeSerializer, AssetsSerializer
+
+from .serializers import AssetSettingSerializer, AssetTypeSerializer, AssetsSerializer, AssetTypeListSerializer
 from .models import AssetSetting, AssetType, Asset
 
 
@@ -68,8 +70,9 @@ class AssetSettingsView(APIView):
             raise NotFound('Asset setting for this user do not exist.')
 
 
-class AssetTypesView(APIView):
+class AssetTypesView(APIView, PageNumberPagination):
     permission_classes = (permissions.IsAuthenticated,)
+    page_size = 10
 
     @staticmethod
     def post(request, *args, **kwargs):
@@ -98,16 +101,34 @@ class AssetTypesView(APIView):
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         raise ValidationError(serializer.errors)
 
-    @staticmethod
-    def get(request, *args, **kwargs):
+    # @staticmethod
+    # def get(request, *args, **kwargs):
+    #     user = request.user
+    #     asset_type_pk: int = kwargs.get('asset_type_pk')
+    #     try:
+    #         asset_type: Union[QuerySet, AssetType] = AssetType.objects.get(pk=asset_type_pk, user=user)
+    #         asset_type_serializer: AssetTypeSerializer = AssetTypeSerializer(asset_type)
+    #         return Response(data=asset_type_serializer.data, status=status.HTTP_200_OK)
+    #     except AssetType.DoesNotExist:
+    #         raise NotFound('Asset type for this user do not exist.')
+
+    def get(self, request, *args, **kwargs):
         user = request.user
         asset_type_pk: int = kwargs.get('asset_type_pk')
-        try:
-            asset_type: Union[QuerySet, AssetType] = AssetType.objects.get(pk=asset_type_pk, user=user)
-            asset_type_serializer: AssetTypeSerializer = AssetTypeSerializer(asset_type)
-            return Response(data=asset_type_serializer.data, status=status.HTTP_200_OK)
-        except AssetType.DoesNotExist:
-            raise NotFound('Asset type for this user do not exist.')
+        # Get One Asset Type
+        if asset_type_pk:
+            try:
+                asset_type: Union[QuerySet, AssetType] = AssetType.objects.get(pk=asset_type_pk, user=user)
+                asset_type_serializer: AssetTypeListSerializer = AssetTypeListSerializer(asset_type)
+                return Response(data=asset_type_serializer.data, status=status.HTTP_200_OK)
+            except AssetType.DoesNotExist:
+                raise NotFound('Asset type for this user do not exist.')
+        # Get list of asset types
+        asset_types: Union[QuerySet, AssetType] = AssetType.objects.filter(user=user).order_by('-pk')
+        page = self.paginate_queryset(request=request, queryset=asset_types)
+        if page is not None:
+            serializer: AssetTypeListSerializer = AssetTypeListSerializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
 
     @staticmethod
     def patch(request, *args, **kwargs):
@@ -143,9 +164,8 @@ class AssetTypesView(APIView):
             raise NotFound('Asset type for this user do not exist.')
 
 
-class AssetsView(APIView, PageNumberPagination):
+class AssetsView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
-    page_size = 10
 
     @staticmethod
     def post(request, *args, **kwargs):
@@ -193,14 +213,6 @@ class AssetsView(APIView, PageNumberPagination):
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         raise ValidationError(serializer.errors)
 
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        messages = Asset.objects.filter(user=user)
-        page = self.paginate_queryset(request=request, queryset=messages)
-        if page is not None:
-            serializer = AssetsSerializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-
     @staticmethod
     def patch(request, *args, **kwargs):
         user = request.user
@@ -217,3 +229,52 @@ class AssetsView(APIView, PageNumberPagination):
         asset_pks_list = str(asset_pk).split(',')
         Asset.objects.filter(user=user, pk__in=asset_pks_list).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ListAssetsView(ListAPIView, PageNumberPagination):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = AssetsSerializer
+    filter_backends = [OrderingFilter, SearchFilter]
+    ordering_fields = ['asset_name', 'asset_number', 'purchase_date', 'purchase_price']
+    ordering = ['-pk']
+    search_fields = ['asset_name', 'asset_number', 'asset_type__asset_type', 'description']
+    http_method_names = ('get',)
+    page_size = 10
+
+    def get_queryset(self) -> Union[QuerySet, Asset]:
+        user = self.request.user
+        queryset: QuerySet[Asset] = Asset.objects.filter(user=user)
+        return self.get_list_by_asset_status(queryset)
+
+    def get_list_by_asset_status(self, queryset: QuerySet) -> QuerySet:
+        asset_status: str = self.request.query_params.get('asset_status', None)
+        if asset_status:
+            query: QuerySet = queryset.filter(asset_status=asset_status)
+            return query
+        return Asset.objects.none()
+
+    def list(self, request, *args, **kwargs):
+        queryset: Union[QuerySet, Asset] = self.get_queryset()
+        filter_queryset: QuerySet = self.filter_queryset(queryset)
+        page = self.paginate_queryset(filter_queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+
+class AssetNumbersView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    @staticmethod
+    def get(request, *args, **kwargs):
+        user = request.user
+        assets: Union[QuerySet, Asset] = Asset.objects.filter(user=user)
+        registered = assets.filter(asset_status='RE').count()
+        draft = assets.filter(asset_status='DR').count()
+        disposed = assets.filter(asset_status='DI').count()
+        data: Dict[str, int] = {
+            'registered': registered,
+            'draft': draft,
+            'disposed': disposed
+        }
+        return Response(data=data, status=status.HTTP_200_OK)

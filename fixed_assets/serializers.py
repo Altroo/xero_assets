@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import AssetSetting, AssetType, Asset
+from .models import AssetSetting, AssetType, Asset, AssetAccount
 
 
 class AssetSettingSerializer(serializers.ModelSerializer):
@@ -20,7 +20,34 @@ class AssetTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AssetType
-        fields = ['user', 'asset_type', 'asset_account',
+        fields = ['pk', 'user', 'asset_type', 'asset_account',
+                  'accumulated_depreciation_account',
+                  'depreciation_expense_account',
+                  'depreciation_method',
+                  'averaging_method',
+                  'rate', 'effective_life']
+        extra_kwargs = {
+            'pk': {'read_only': True},
+            'user': {'write_only': True},
+            'rate': {'required': False},
+            'effective_life': {'required': False},
+        }
+
+
+class AssetTypeDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AssetAccount
+        fields = ['pk', 'account_name', 'account_type_code']
+
+
+class AssetTypeListSerializer(serializers.ModelSerializer):
+    asset_account = AssetTypeDetailsSerializer(read_only=True)
+    accumulated_depreciation_account = AssetTypeDetailsSerializer(read_only=True)
+    depreciation_expense_account = AssetTypeDetailsSerializer(read_only=True)
+
+    class Meta:
+        model = AssetType
+        fields = ['pk', 'user', 'asset_type', 'asset_account',
                   'accumulated_depreciation_account',
                   'depreciation_expense_account',
                   'depreciation_method',

@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import AssetSettingsView, AssetTypesView, AssetsView
+from .views import (AssetSettingsView, AssetTypesView, AssetsView,
+                    ListAssetsView, AssetNumbersView)
 
 app_name = 'fixed_assets'
 
@@ -14,8 +15,11 @@ urlpatterns = [
     path('asset-types/', AssetTypesView.as_view()),
     path('asset-types/<int:asset_type_pk>/', AssetTypesView.as_view()),
     # POST : Add new Asset
-    # GET : Get one asset or assets list
     # DELETE : Delete one or multiple assets
     # PATCH : Edit Asset status
     path('assets/', AssetsView.as_view()),
+    # GET : Get Assets list filtered
+    path('assets-list/', ListAssetsView.as_view()),
+    # GET : Tab asset_status numbers
+    path('asset-numbers/', AssetNumbersView.as_view()),
 ]
