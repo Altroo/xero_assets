@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (AssetSettingsView, AssetTypesView, AssetsView,
-                    ListAssetsView, AssetNumbersView)
+                    ListAssetsView, AssetNumbersView, AssetRunDepreciationView)
 
 app_name = 'fixed_assets'
 
@@ -22,4 +22,5 @@ urlpatterns = [
     path('assets-list/', ListAssetsView.as_view()),
     # GET : Tab asset_status numbers
     path('asset-numbers/', AssetNumbersView.as_view()),
+    path('asset-run-depreciation/', AssetRunDepreciationView.as_view()),
 ]

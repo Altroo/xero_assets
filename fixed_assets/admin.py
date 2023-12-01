@@ -1,5 +1,5 @@
 from django.contrib.admin import ModelAdmin, site
-from .models import AssetSetting, AssetAccount, AssetType, Asset
+from .models import AssetSetting, AssetAccount, AssetType, Asset, CalculatedDepreciation
 
 
 class CustomAdminParent:
@@ -47,6 +47,10 @@ class CustomAssetAdmin(ModelAdmin, CustomAdminParent):
     list_filter = ('asset_status', 'warranty_expiry', 'region')
 
 
+class CustomCalculatedDepreciationAdmin(ModelAdmin, CustomAdminParent):
+    search_fields = ('pk', 'asset', 'depreciation_of', 'depreciation_date')
+    list_display = ('pk', 'asset', 'depreciation_of', 'depreciation_date')
+
 # class CustomRegionAdmin(ModelAdmin):
 #     search_fields = ('pk', 'region_name')
 #     list_display = ('pk', 'region_name')
@@ -60,4 +64,5 @@ site.register(AssetSetting, CustomSettingAdmin)
 site.register(AssetAccount, CustomAssetAccountAdmin)
 site.register(AssetType, CustomAssetTypeAdmin)
 site.register(Asset, CustomAssetAdmin)
+site.register(CalculatedDepreciation, CustomCalculatedDepreciationAdmin)
 # site.register(Region, CustomRegionAdmin)

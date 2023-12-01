@@ -147,3 +147,16 @@ class Asset(Model):
     class Meta:
         verbose_name = 'Asset'
         verbose_name_plural = 'Assets'
+
+
+class CalculatedDepreciation(Model):
+    asset = ForeignKey(Asset, on_delete=CASCADE, verbose_name='Asset', related_name="calculated_depreciation_asset")
+    depreciation_of = FloatField(verbose_name='Depreciation of', blank=True, null=True)
+    depreciation_date = DateField(verbose_name='Depreciation Date', null=True, blank=True)
+
+    def __str__(self):
+        return '{} - {} - {}'.format(self.asset.asset_name, self.depreciation_of, self.depreciation_date)
+
+    class Meta:
+        verbose_name = 'Calculated Depreciation'
+        verbose_name_plural = 'Calculated Depreciations'

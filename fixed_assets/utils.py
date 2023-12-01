@@ -189,7 +189,8 @@ class DecliningBalanceBy100Or150Or200(Init):
 #         'averaging_method': 'FM',  # FM = full month, AD = Actual day
 #         'rate': 20.00,
 #         # 'effective_life': '',
-#         # 'depreciation_method': 'ST', # ST = Straight line, ND = No depreciation, 100, 150, 200, FD = full depreciation
+#         # 'depreciation_method': 'ST', # ST = Straight line, ND = No depreciation, 100, 150, 200,
+#         # FD = full depreciation
 #     }
 #     test_straight_line = StraightLine(args_one)
 #     result_one = test_straight_line.calculate_depreciation()
@@ -203,7 +204,8 @@ class DecliningBalanceBy100Or150Or200(Init):
 #         'averaging_method': 'FM',  # FM = full month, AD = Actual day
 #         'rate': 20.00,
 #         # 'effective_life': '',
-#         # 'depreciation_method': 'ST', # ST = Straight line, ND = No depreciation, 100, 150, 200, FD = full depreciation
+#         # 'depreciation_method': 'ST', # ST = Straight line, ND = No depreciation, 100, 150, 200,
+#         # FD = full depreciation
 #     }
 #     test_straight_line = StraightLine(args_two)
 #     result_one = test_straight_line.calculate_depreciation()

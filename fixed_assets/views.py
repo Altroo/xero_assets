@@ -1,3 +1,5 @@
+from calendar import monthrange
+from datetime import datetime, date
 from typing import Union, Dict
 
 from django.db.models import QuerySet
@@ -9,7 +11,8 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import AssetSettingSerializer, AssetTypeSerializer, AssetsSerializer, AssetTypeListSerializer
+from .serializers import (AssetSettingSerializer, AssetTypeSerializer, AssetsSerializer, AssetsListSerializer,
+                          AssetTypeListSerializer, CalculatedDepreciationSerializer)
 from .models import AssetSetting, AssetType, Asset
 from .utils import StraightLine, FullDepreciation, DecliningBalanceBy100Or150Or200
 
@@ -220,12 +223,27 @@ class AssetsView(APIView):
                 book_value: Union[float, int] = FullDepreciation(data).calculate_depreciation()
             else:
                 book_value: Union[float, int] = 0
-            data = {
-                **data,
-                'book_value': int(data.get('purchase_price')) - book_value,
-            }
-            serializer.save()
-            return Response(data=data, status=status.HTTP_200_OK)
+            # Only if asset is registered
+            if asset_status == 'RE':
+                new_book_value: float = int(data.get('purchase_price')) - book_value
+                date_object: date = datetime.strptime(data.get('depreciation_start_date'), '%Y-%m-%d').date()
+                last_month_day: int = monthrange(date_object.year, date_object.month)[1]
+                last_date: date = date(date_object.year, date_object.month, last_month_day)
+                data: Dict[str, Union[int, str, float, None]] = {
+                    **data,
+                    'book_value': new_book_value,
+                }
+                asset = serializer.save()
+                calculated_depreciation_serializer: CalculatedDepreciationSerializer = (
+                    CalculatedDepreciationSerializer(data={
+                        'asset': asset.pk,
+                        'depreciation_of': book_value,
+                        'depreciation_date': last_date
+                    }))
+                if calculated_depreciation_serializer.is_valid():
+                    calculated_depreciation_serializer.save()
+                    return Response(data=data, status=status.HTTP_200_OK)
+                raise ValidationError(calculated_depreciation_serializer.errors)
         raise ValidationError(serializer.errors)
 
     @staticmethod
@@ -250,7 +268,7 @@ class AssetsView(APIView):
 
 class ListAssetsView(ListAPIView, PageNumberPagination):
     permission_classes = (permissions.IsAuthenticated,)
-    serializer_class = AssetsSerializer
+    serializer_class = AssetsListSerializer
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ['asset_name', 'asset_number', 'purchase_date', 'purchase_price']
     ordering = ['-pk']
@@ -295,3 +313,10 @@ class AssetNumbersView(APIView):
             'disposed': disposed
         }
         return Response(data=data, status=status.HTTP_200_OK)
+
+
+class AssetRunDepreciationView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, *args, **kwargs):
+        pass
