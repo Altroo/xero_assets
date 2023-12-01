@@ -1466,3 +1466,279 @@ AttributeError: Got AttributeError when attempting to get a value for field `ass
 The serializer field might be named incorrectly and not match any attribute or key on the `Asset` instance.
 Original exception text was: 'Asset' object has no attribute 'asset_account'.
 "GET /fixed-assets/asset-types/ HTTP/1.1" 500 149394
+Method Not Allowed: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 405 40
+Method Not Allowed: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 405 40
+Bad Request: /fixed-assets/assets/
+"POST /fixed-assets/assets/ HTTP/1.1" 400 65
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 217, in post
+    book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(serializer.data)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 178, in calculate_depreciation
+    result: Union[int, float] = ((((self.purchase_price / self.effective_life) / self.days_in_year()) *
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 111363
+Bad Request: /fixed-assets/assets/
+"POST /fixed-assets/assets/ HTTP/1.1" 400 65
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 216, in post
+    book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(serializer.data)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 178, in calculate_depreciation
+    result: Union[int, float] = ((((self.purchase_price / self.effective_life) / self.days_in_year()) *
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 111389
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 214, in post
+    book_value: Union[float, int] = StraightLine(serializer.data).calculate_depreciation()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 71, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price * (self.rate / 100) / self.days_in_year()) *
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 19, in days_in_year
+    year: List[str] = self.start_date.split('/')
+AttributeError: 'NoneType' object has no attribute 'split'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 115287
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 214, in post
+    book_value: Union[float, int] = StraightLine(serializer.data).calculate_depreciation()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 71, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price * (self.rate / 100) / self.days_in_year()) *
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 19, in days_in_year
+    year: List[str] = self.start_date.split('-')
+AttributeError: 'NoneType' object has no attribute 'split'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 115287
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 226, in post
+    serializer.save()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 198, in save
+    assert not hasattr(self, '_data'), (
+AssertionError: You cannot call `.save()` after accessing `serializer.data`.If you need to access data before committing to the database then inspect 'serializer.validated_data' instead. 
+"POST /fixed-assets/assets/ HTTP/1.1" 500 116199
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 213, in post
+    if serializer.is_valid():
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 220, in is_valid
+    assert hasattr(self, 'initial_data'), (
+AssertionError: Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+"POST /fixed-assets/assets/ HTTP/1.1" 500 115596
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 215, in post
+    book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 71, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price * (self.rate / 100) / self.days_in_year()) *
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 112308
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 215, in post
+    book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 71, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price * (self.rate / 100) / self.days_in_year()) *
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 112308
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 215, in post
+    book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 71, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price * (self.rate / 100) / self.days_in_year()) *
+TypeError: can't multiply sequence by non-int of type 'float'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 112290
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 215, in post
+    book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 79, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price * (self.rate / 100) / self.days_in_year()) *
+TypeError: can't multiply sequence by non-int of type 'float'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 112290
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 215, in post
+    book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 11, in __init__
+    self.cost_limit: Union[float, int] = float(kwargs.get('cost_limit', 0))
+TypeError: float() argument must be a string or a number, not 'NoneType'
+"POST /fixed-assets/assets/ HTTP/1.1" 500 113192

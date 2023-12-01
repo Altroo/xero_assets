@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 
 from .serializers import AssetSettingSerializer, AssetTypeSerializer, AssetsSerializer, AssetTypeListSerializer
 from .models import AssetSetting, AssetType, Asset
+from .utils import StraightLine, FullDepreciation, DecliningBalanceBy100Or150Or200
 
 
 class AssetSettingsView(APIView):
@@ -188,29 +189,43 @@ class AssetsView(APIView):
         effective_life: Union[int, None] = request.data.get('effective_life')
         # Save as draft or register
         asset_status: str = request.data.get('asset_status')
-        serializer: AssetsSerializer = AssetsSerializer(data={
+        data = {
             'user': user_pk,
             'asset_name': asset_name,
             'asset_number': asset_number,
             'purchase_date': purchase_date,
-            'purchase_price': purchase_price,
+            'purchase_price': float(purchase_price) if purchase_price else None,
             'warranty_expiry': warranty_expiry,
             'serial_number': serial_number,
             'asset_type': asset_type,
             'region': region,
             'description': description,
             'depreciation_start_date': depreciation_start_date,
-            'cost_limit': cost_limit,
-            'residual_value': residual_value,
+            'cost_limit': float(cost_limit) if cost_limit else None,
+            'residual_value': float(residual_value) if residual_value else None,
             'depreciation_method': depreciation_method,
             'averaging_method': averaging_method,
-            'rate': rate,
-            'effective_life': effective_life,
+            'rate': float(rate) if rate else None,
+            'effective_life': float(effective_life) if effective_life else None,
             'asset_status': asset_status,
-        })
+        }
+        serializer: AssetsSerializer = AssetsSerializer(data=data)
         if serializer.is_valid():
+            if depreciation_method == 'ST':
+                book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
+            elif depreciation_method in ['100', '150', '200']:
+                book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
+                                                 .calculate_depreciation())
+            elif depreciation_method == 'FD':
+                book_value: Union[float, int] = FullDepreciation(data).calculate_depreciation()
+            else:
+                book_value: Union[float, int] = 0
+            data = {
+                **data,
+                'book_value': int(data.get('purchase_price')) - book_value,
+            }
             serializer.save()
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(data=data, status=status.HTTP_200_OK)
         raise ValidationError(serializer.errors)
 
     @staticmethod
