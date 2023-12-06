@@ -140,6 +140,7 @@ class Asset(Model):
     effective_life = PositiveIntegerField(verbose_name='Effective Life', blank=True, null=True)
     asset_status = CharField(verbose_name='Asset Status', choices=AccountType.STATUS_CHOICES, default='RE',
                              max_length=2)
+    book_value = FloatField(verbose_name='Book value', blank=True, null=True, default=0)
 
     def __str__(self):
         return '{} - {} - {}'.format(self.asset_name, self.rate, self.effective_life)
@@ -160,3 +161,4 @@ class CalculatedDepreciation(Model):
     class Meta:
         verbose_name = 'Calculated Depreciation'
         verbose_name_plural = 'Calculated Depreciations'
+        unique_together = (('asset', 'depreciation_date'),)

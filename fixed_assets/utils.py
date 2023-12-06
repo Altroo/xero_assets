@@ -180,33 +180,33 @@ class DecliningBalanceBy100Or150Or200(Init):
         return round(result, 2)
 
 
-# if __name__ == '__main__':
-#     args_one = {
-#         'depreciation_start_date': '8/11/2023',
-#         'purchase_price': 6000,
-#         # 'cost_limit': '',
-#         # 'residual_value': '',
-#         'averaging_method': 'FM',  # FM = full month, AD = Actual day
-#         'rate': 20.00,
-#         # 'effective_life': '',
-#         # 'depreciation_method': 'ST', # ST = Straight line, ND = No depreciation, 100, 150, 200,
-#         # FD = full depreciation
-#     }
-#     test_straight_line = StraightLine(args_one)
-#     result_one = test_straight_line.calculate_depreciation()
-#     print(result_one)  # 100.0
-#
-#     args_two = {
-#         'depreciation_start_date': '8/11/2023',
-#         'purchase_price': 6000,
-#         'cost_limit': 3000,
-#         # 'residual_value': '',
-#         'averaging_method': 'FM',  # FM = full month, AD = Actual day
-#         'rate': 20.00,
-#         # 'effective_life': '',
-#         # 'depreciation_method': 'ST', # ST = Straight line, ND = No depreciation, 100, 150, 200,
-#         # FD = full depreciation
-#     }
-#     test_straight_line = StraightLine(args_two)
-#     result_one = test_straight_line.calculate_depreciation()
-#     print(result_one)  # 50.0
+if __name__ == '__main__':
+    args_one = {
+        'depreciation_start_date': '2023-11-8',
+        'purchase_price': 6000,
+        # 'cost_limit': '',
+        # 'residual_value': '',
+        'averaging_method': 'FM',  # FM = full month, AD = Actual day
+        'rate': 20.00,
+        # 'effective_life': '',
+        # 'depreciation_method': 'ST', # ST = Straight line, ND = No depreciation, 100, 150, 200,
+        # FD = full depreciation
+    }
+    test_straight_line = StraightLine(args_one)
+    result_one = test_straight_line.calculate_depreciation()
+    print(result_one)  # 100.0
+
+    args_two = {
+        'depreciation_start_date': '2023-11-8',
+        'purchase_price': 6000,
+        'cost_limit': 3000,
+        # 'residual_value': '',
+        'averaging_method': 'FM',  # FM = full month, AD = Actual day
+        'rate': 20.00,
+        # 'effective_life': '',
+        # 'depreciation_method': 'ST', # ST = Straight line, ND = No depreciation, 100, 150, 200,
+        # FD = full depreciation
+    }
+    test_straight_line = StraightLine(args_two)
+    result_one = test_straight_line.calculate_depreciation()
+    print(result_one)  # 50.0

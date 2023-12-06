@@ -82,17 +82,17 @@ class AssetsSerializer(serializers.ModelSerializer):
 
 
 class AssetsListSerializer(serializers.ModelSerializer):
-    book_value = serializers.SerializerMethodField()
-
-    @staticmethod
-    def get_book_value(instance):
-        if instance.asset_status == 'RE':
-            result = CalculatedDepreciation.objects.filter(asset=instance.pk)
-            purchase_price = float(instance.purchase_price)
-            for i in result:
-                purchase_price -= i.depreciation_of
-            return purchase_price
-        return instance.purchase_price
+    # book_value = serializers.SerializerMethodField()
+    #
+    # @staticmethod
+    # def get_book_value(instance):
+    #     if instance.asset_status == 'RE':
+    #         result = CalculatedDepreciation.objects.filter(asset=instance.pk)
+    #         purchase_price = float(instance.purchase_price)
+    #         for i in result:
+    #             purchase_price -= i.depreciation_of
+    #         return purchase_price
+    #     return instance.purchase_price
 
     class Meta:
         model = Asset

@@ -41,9 +41,9 @@ class CustomAssetAdmin(ModelAdmin, CustomAdminParent):
     search_fields = ('pk', 'user', 'asset_name', 'asset_number',
                      'purchase_date', 'purchase_price', 'warranty_expiry',
                      'serial_number', 'asset_type__asset_type', 'region', 'description', 'depreciation_start_date',
-                     'cost_limit', 'residual_value', 'asset_status')
+                     'cost_limit', 'residual_value', 'asset_status', 'book_value')
     list_display = ('pk', 'user', 'asset_name', 'depreciation_method', 'averaging_method', 'rate', 'effective_life',
-                    'asset_status')
+                    'asset_status', 'book_value')
     list_filter = ('asset_status', 'warranty_expiry', 'region')
 
 
