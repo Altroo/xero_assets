@@ -2123,3 +2123,440 @@ Traceback (most recent call last):
 TypeError: unsupported operand type(s) for -: 'int' and 'dict'
 "POST /fixed-assets/asset-run-depreciation/ HTTP/1.1" 500 103623
 Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /fixed-assets/asset/
+"GET /fixed-assets/asset/ HTTP/1.1" 404 4236
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Asset' object has no attribute 'value'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `value` on serializer `AssetsGetSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Asset` instance.
+Original exception text was: 'Asset' object has no attribute 'value'.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 154313
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Asset' object has no attribute 'value'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `value` on serializer `AssetsGetSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Asset` instance.
+Original exception text was: 'Asset' object has no attribute 'value'.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 137509
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Asset' object has no attribute 'value'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `value` on serializer `AssetsGetSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Asset` instance.
+Original exception text was: 'Asset' object has no attribute 'value'.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 127101
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Asset' object has no attribute 'value'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `value` on serializer `AssetsGetSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Asset` instance.
+Original exception text was: 'Asset' object has no attribute 'value'.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 127101
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Asset' object has no attribute 'value'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `value` on serializer `AssetsGetSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Asset` instance.
+Original exception text was: 'Asset' object has no attribute 'value'.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 127101
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Asset' object has no attribute 'value'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `value` on serializer `AssetsGetSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Asset` instance.
+Original exception text was: 'Asset' object has no attribute 'value'.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 127101
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'AssetType' object has no attribute 'account_type_code'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `account_type_code` on serializer `AssetTypeDetailsSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `AssetType` instance.
+Original exception text was: 'AssetType' object has no attribute 'account_type_code'.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 144025
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 507, in to_representation
+    for field in fields:
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 368, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'cost_basis' was declared on serializer AssetsGetSerializer, but has not been included in the 'fields' option.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 144847
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 1838, in to_representation
+    return method(value)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\serializers.py", line 113, in get_depreciated_to
+    return CalculatedDepreciation.objects.latest(asset=obj.pk).depreciation_date
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+TypeError: latest() got an unexpected keyword argument 'asset'
+"GET /fixed-assets/assets/ HTTP/1.1" 500 136239
+Not Found: /favicon.ico
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 507, in to_representation
+    for field in fields:
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 368, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'ytd_depreciation' was declared on serializer AssetsGetSerializer, but has not been included in the 'fields' option.
+"GET /fixed-assets/assets/ HTTP/1.1" 500 145751
+Internal Server Error: /fixed-assets/assets/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 348, in get
+    return Response(data=serializer.data, status=status.HTTP_200_OK)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\fields.py", line 1838, in to_representation
+    return method(value)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\serializers.py", line 122, in get_ytd_depreciation
+    total += i.depreciation_amount
+AttributeError: 'CalculatedDepreciation' object has no attribute 'depreciation_amount'
+"GET /fixed-assets/assets/ HTTP/1.1" 500 133366

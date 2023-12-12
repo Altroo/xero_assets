@@ -19,6 +19,7 @@ urlpatterns = [
     # DELETE : Delete one or multiple assets
     # PATCH : Edit Asset status
     # PUT : Edit Asset
+    # GET : Get Asset details
     path('assets/', AssetsView.as_view()),
     # POST : Mark asset as Register
     path('assets-register/', AssetsRegisterView.as_view()),

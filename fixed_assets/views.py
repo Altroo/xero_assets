@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .serializers import (AssetSettingSerializer, AssetTypeSerializer, AssetsSerializer, AssetsListSerializer,
-                          AssetTypeListSerializer, CalculatedDepreciationSerializer)
+                          AssetTypeListSerializer, CalculatedDepreciationSerializer, AssetsGetSerializer)
 from .models import AssetSetting, AssetType, Asset, CalculatedDepreciation
 from .utils import StraightLine, FullDepreciation, DecliningBalanceBy100Or150Or200
 
@@ -337,6 +337,17 @@ class AssetsView(APIView):
         asset_pks_list = str(asset_pk).split(',')
         Asset.objects.filter(user=user, pk__in=asset_pks_list).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @staticmethod
+    def get(request, *args, **kwargs):
+        user = request.user
+        asset_pk: Union[int, str] = request.data.get('asset_pk')
+        try:
+            asset = Asset.objects.get(pk=asset_pk, user=user)
+            serializer: AssetsGetSerializer = AssetsGetSerializer(asset)
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+        except Asset.DoesNotExist:
+            raise NotFound('Asset for this user do not exist.')
 
 
 class AssetsRegisterView(APIView):

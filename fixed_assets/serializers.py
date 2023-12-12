@@ -1,6 +1,11 @@
-from rest_framework import serializers
-from .models import AssetSetting, AssetType, Asset, AssetAccount, CalculatedDepreciation
+from typing import Union
 
+from django.db.models import Sum
+from rest_framework import serializers
+from rest_framework.fields import SerializerMethodField
+
+from .models import AssetSetting, AssetType, Asset, AssetAccount, CalculatedDepreciation
+from datetime import datetime
 
 class AssetSettingSerializer(serializers.ModelSerializer):
     start_date = serializers.DateField(format='%d/%m/%Y')
@@ -79,6 +84,77 @@ class AssetsSerializer(serializers.ModelSerializer):
             'rate': {'required': False},
             'effective_life': {'required': False},
         }
+
+
+# class AssetsValuesSerializer(serializers.Serializer):
+#     purchase_date = serializers.DateField()
+#
+#     def update(self, instance, validated_data):
+#         pass
+#
+#     def create(self, validated_data):
+#         pass
+
+
+class AssetTypeGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AssetType
+        fields = ['pk', 'asset_type']
+
+
+class AssetsGetSerializer(serializers.ModelSerializer):
+    asset_type = AssetTypeGetSerializer(read_only=True)
+    basis = SerializerMethodField()
+    cost_basis = SerializerMethodField()
+    basis_value = SerializerMethodField()
+    accumulated_depreciation = SerializerMethodField()
+    ytd_depreciation = SerializerMethodField()
+    depreciated_to = SerializerMethodField()
+
+    @staticmethod
+    def get_ytd_depreciation(obj):
+        starting_day_of_current_year = datetime.now().date().replace(month=1, day=1)
+        result = (CalculatedDepreciation.objects.filter(asset=obj.pk)
+                  .filter(depreciation_date__gte=starting_day_of_current_year,
+                          depreciation_date__lte=datetime.now().date()))
+        total: Union[float, int] = 0
+        for i in result:
+            total += i.depreciation_of
+        return total
+
+    @staticmethod
+    def get_depreciated_to(obj):
+        return CalculatedDepreciation.objects.filter(asset=obj.pk).latest('depreciation_date').depreciation_date
+
+    @staticmethod
+    def get_accumulated_depreciation(obj):
+        return ((CalculatedDepreciation.objects.filter(asset=obj.pk).aggregate(Sum('depreciation_of')))
+                .get('depreciation_of__sum'))
+
+    @staticmethod
+    def get_basis_value(obj):
+        return (int(obj.purchase_price) - (CalculatedDepreciation.objects.filter(asset=obj.pk)
+                                           .aggregate(Sum('depreciation_of'))).get('depreciation_of__sum'))
+
+    @staticmethod
+    def get_cost_basis(obj):
+        return obj.purchase_price
+
+    @staticmethod
+    def get_basis(obj):
+        return 'Book'
+
+    class Meta:
+        model = Asset
+        fields = ['pk', 'asset_name', 'asset_number',
+                  'purchase_date', 'purchase_price',
+                  'warranty_expiry', 'serial_number',
+                  'asset_type', 'region', 'description',
+                  'depreciation_start_date', 'cost_limit',
+                  'residual_value', 'depreciation_method',
+                  'averaging_method', 'rate', 'effective_life',
+                  'asset_status', 'basis', 'cost_basis', 'basis_value',
+                  'accumulated_depreciation', 'ytd_depreciation', 'depreciated_to']
 
 
 class AssetsListSerializer(serializers.ModelSerializer):
