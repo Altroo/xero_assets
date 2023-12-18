@@ -1,11 +1,12 @@
 from typing import Union
 
-from django.db.models import Sum
+from django.db.models import Sum, QuerySet
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
 from .models import AssetSetting, AssetType, Asset, AssetAccount, CalculatedDepreciation
-from datetime import datetime
+from datetime import datetime, date
+
 
 class AssetSettingSerializer(serializers.ModelSerializer):
     start_date = serializers.DateField(format='%d/%m/%Y')
@@ -41,7 +42,7 @@ class AssetTypeSerializer(serializers.ModelSerializer):
 class AssetTypeDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssetAccount
-        fields = ['pk', 'account_name', 'account_type_code']
+        fields = ['pk', 'account_name', 'account_type_code', 'account_value']
 
 
 class AssetTypeListSerializer(serializers.ModelSerializer):
@@ -113,11 +114,12 @@ class AssetsGetSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_ytd_depreciation(obj):
-        starting_day_of_current_year = datetime.now().date().replace(month=1, day=1)
-        result = (CalculatedDepreciation.objects.filter(asset=obj.pk)
-                  .filter(depreciation_date__gte=starting_day_of_current_year,
-                          depreciation_date__lte=datetime.now().date()))
+        starting_day_of_current_year: date = datetime.now().date().replace(month=1, day=1)
+        result: QuerySet[CalculatedDepreciation] = (CalculatedDepreciation.objects.filter(asset=obj.pk)
+                                                    .filter(depreciation_date__gte=starting_day_of_current_year,
+                                                            depreciation_date__lte=datetime.now().date()))
         total: Union[float, int] = 0
+        i: Union[QuerySet, CalculatedDepreciation]
         for i in result:
             total += i.depreciation_of
         return total

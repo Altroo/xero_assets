@@ -16,8 +16,8 @@ class CustomSettingAdmin(ModelAdmin, CustomAdminParent):
 
 # AssetAccount
 class CustomAssetAccountAdmin(ModelAdmin, CustomAdminParent):
-    search_fields = ('pk', 'account_name', 'account_type_code', 'tax')
-    list_display = ('pk', 'account_name', 'account_type_code', 'tax')
+    search_fields = ('pk', 'account_name', 'account_type_code', 'tax', 'account_value')
+    list_display = ('pk', 'account_name', 'account_type_code', 'tax', 'account_value')
 
 
 class CustomAssetTypeAdmin(ModelAdmin, CustomAdminParent):

@@ -62,7 +62,8 @@ class AssetAccount(Model):
     account_name = CharField(verbose_name='Account name', max_length=255, blank=True, null=True, default=None)
     account_type_code = CharField(verbose_name='Account Type code', max_length=15, unique=True)
     tax = CharField(verbose_name='Tax', choices=AccountType.TAX_CHOICES, default='ES', max_length=2)
-
+    account_value = FloatField(verbose_name='Account Value', null=True, blank=True, default=0)
+    
     def __str__(self):
         return '{} - {}'.format(self.account_type_code, self.tax)
 
