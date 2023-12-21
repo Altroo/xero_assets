@@ -63,7 +63,7 @@ class AssetAccount(Model):
     account_type_code = CharField(verbose_name='Account Type code', max_length=15, unique=True)
     tax = CharField(verbose_name='Tax', choices=AccountType.TAX_CHOICES, default='ES', max_length=2)
     account_value = FloatField(verbose_name='Account Value', null=True, blank=True, default=0)
-    
+
     def __str__(self):
         return '{} - {}'.format(self.account_type_code, self.tax)
 
@@ -163,3 +163,29 @@ class CalculatedDepreciation(Model):
         verbose_name = 'Calculated Depreciation'
         verbose_name_plural = 'Calculated Depreciations'
         unique_together = (('asset', 'depreciation_date'),)
+
+
+class DisposedAsset(Model):
+    asset = OneToOneField(Asset, on_delete=CASCADE, verbose_name='Asset', related_name="disposed_asset_asset")
+    disposal_date = DateField(verbose_name='Disposal Date', null=True, blank=True)
+    disposal_price = FloatField(verbose_name='Disposal Price', blank=True, null=True)
+    gain_on_disposal_account = ForeignKey(AssetAccount, on_delete=CASCADE,
+                                          verbose_name='Gain on disposal Account',
+                                          related_name='gain_on_disposal_account',
+                                          null=True, blank=True)
+    capital_gain_account = ForeignKey(AssetAccount, on_delete=CASCADE,
+                                      verbose_name='Capital gain Account',
+                                      related_name='capital_gain_account',
+                                      null=True, blank=True)
+    loss_on_disposal_account = ForeignKey(AssetAccount, on_delete=CASCADE,
+                                          verbose_name='Loss on disposal Account',
+                                          related_name='loss_on_disposal_account',
+                                          null=True, blank=True)
+    gain_losses = FloatField(verbose_name='Gain/losses', blank=True, null=True)
+
+    def __str__(self):
+        return '{} - {} - {}'.format(self.asset.asset_name, self.disposal_date, self.gain_losses)
+
+    class Meta:
+        verbose_name = 'Disposed Asset'
+        verbose_name_plural = 'Disposed Assets'

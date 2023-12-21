@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (AssetSettingsView, AssetTypesView, AssetsView,
                     ListAssetsView, AssetNumbersView, AssetRunDepreciationView,
                     AssetsRegisterView, AssetsDraftView, AssetsRollBackDepreciationView,
-                    AssetsDisposeView)
+                    AssetsDisposeView, ListAssetsDisposedView)
 
 app_name = 'fixed_assets'
 
@@ -34,6 +34,9 @@ urlpatterns = [
     path('asset-run-depreciation/', AssetRunDepreciationView.as_view()),
     # POST : Run rollback
     path('asset-run-rollback/', AssetsRollBackDepreciationView.as_view()),
+    # GET : Dispose Asset details
     # POST : Dispose Asset
     path('asset-dispose/', AssetsDisposeView.as_view()),
+    # GET : Get disposed assets list
+    path('asset-dispose-list/', ListAssetsDisposedView.as_view()),
 ]

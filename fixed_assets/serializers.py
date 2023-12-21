@@ -4,7 +4,8 @@ from django.db.models import Sum, QuerySet
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
-from .models import AssetSetting, AssetType, Asset, AssetAccount, CalculatedDepreciation
+from .models import (AssetSetting, AssetType, Asset, AssetAccount,
+                     CalculatedDepreciation, DisposedAsset)
 from datetime import datetime, date
 
 
@@ -197,6 +198,54 @@ class CalculatedDepreciationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CalculatedDepreciation
         fields = ['pk', 'asset', 'depreciation_of', 'depreciation_date']
+        extra_kwargs = {
+            'pk': {'read_only': True},
+        }
+
+
+class DisposedAssetsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DisposedAsset
+        fields = ['pk', 'asset', 'disposal_date', 'disposal_price', 'gain_on_disposal_account',
+                  'capital_gain_account', 'loss_on_disposal_account', 'gain_losses']
+        extra_kwargs = {
+            'pk': {'read_only': True},
+        }
+
+
+class AssetsDisposedListSerializer(serializers.ModelSerializer):
+    asset_name = serializers.SerializerMethodField()
+    asset_number = serializers.SerializerMethodField()
+    asset_type = serializers.SerializerMethodField()
+    purchase_date = serializers.SerializerMethodField()
+    purchase_price = serializers.SerializerMethodField()
+
+    @staticmethod
+    def get_asset_name(instance):
+        return instance.asset.asset_name
+
+    @staticmethod
+    def get_asset_number(instance):
+        return instance.asset.asset_number
+
+    @staticmethod
+    def get_asset_type(instance):
+        return instance.asset.asset_type.asset_type
+
+    @staticmethod
+    def get_purchase_date(instance):
+        return instance.asset.purchase_date
+
+    @staticmethod
+    def get_purchase_price(instance):
+        return instance.asset.purchase_price
+
+    class Meta:
+        model = DisposedAsset
+        fields = ['pk', 'asset_name', 'asset_number',
+                  'asset_type', 'purchase_date', 'purchase_price',
+                  'disposal_date', 'disposal_price',
+                  'gain_losses']
         extra_kwargs = {
             'pk': {'read_only': True},
         }

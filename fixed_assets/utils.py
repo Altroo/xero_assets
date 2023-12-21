@@ -23,11 +23,11 @@ class Init:
         self.depreciation_method: Union[Literal['100', '150', '200'], None] = kwargs.get('depreciation_method', None)
 
     def days_in_year(self) -> int:
-        year: List[str] = self.start_date.split('-')
+        year: List[str] = str(self.start_date).split('-')
         return 365 + isleap(int(year[0]))
 
     def number_of_days_in_month(self) -> int:
-        date_object: date = datetime.strptime(self.start_date, '%Y-%m-%d').date()
+        date_object: date = datetime.strptime(str(self.start_date).split(' ')[0], '%Y-%m-%d').date()
         last_month_day: int = monthrange(date_object.year, date_object.month)[1]
         last_date: date = date(date_object.year, date_object.month, last_month_day)
         delta: timedelta = last_date - date_object
@@ -115,8 +115,13 @@ class StraightLine(Init):
                                                  / (self.days_in_year() * self.number_of_days_in_month()))
                 # Without residual value
                 else:
+                    # print('purchase_price : ', self.purchase_price)
+                    # print('effective_life : ', self.effective_life)
+                    # print('days_in_year : ', self.days_in_year())
+                    # print('number_of_days_in_month : ', self.number_of_days_in_month())
                     result: Union[int, float] = (((self.purchase_price / self.effective_life) / self.days_in_year()) *
                                                  self.number_of_days_in_month())
+            # print(result)
         return round(result, 2)
 
 
@@ -229,12 +234,12 @@ class DisposeAsset:
         return datetime.strptime(self.depreciation_date, "%Y-%m-%d")
 
     def get_last_depreciation_date(self) -> datetime:
-        return datetime.combine((CalculatedDepreciation.objects.filter(asset=self.asset_pk, user=self.user)
+        return datetime.combine((CalculatedDepreciation.objects.filter(asset=self.asset_pk, asset__user=self.user)
                                  .latest('depreciation_date').depreciation_date),
                                 datetime.min.time())
 
     def get_accumulated_depreciation(self) -> float:
-        return ((CalculatedDepreciation.objects.filter(asset=self.asset_pk, user=self.user)
+        return ((CalculatedDepreciation.objects.filter(asset=self.asset_pk, asset__user=self.user)
                  .aggregate(Sum('depreciation_of')))
                 .get('depreciation_of__sum'))
 
@@ -253,12 +258,13 @@ class DisposeAsset:
         return last_dates
 
     def get_accumulated_depreciations_till_date(self, asset: Union[QuerySet, Asset, CalculatedDepreciation]):
-        accumulated_depreciation: float = ((CalculatedDepreciation.objects.filter(asset=self.asset_pk, user=self.user)
+        accumulated_depreciation: float = ((CalculatedDepreciation.objects.filter(asset=self.asset_pk,
+                                                                                  asset__user=self.user)
                                             .aggregate(Sum('depreciation_of')))
                                            .get('depreciation_of__sum'))
         book_value = 0
         data_: dict = self.generate_data_for_depreciation(asset, self.get_depreciation_date())
-        start_date = (CalculatedDepreciation.objects.filter(asset=self.asset_pk, user=self.user)
+        start_date = (CalculatedDepreciation.objects.filter(asset=self.asset_pk, asset__user=self.user)
                       .latest('depreciation_date').depreciation_date)
         start_date_str: str = str(start_date)
         list_of_dates: list = self.get_list_of_dates(start_date_str, self.depreciation_date)
