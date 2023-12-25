@@ -31,7 +31,8 @@ class Init:
         last_month_day: int = monthrange(date_object.year, date_object.month)[1]
         last_date: date = date(date_object.year, date_object.month, last_month_day)
         delta: timedelta = last_date - date_object
-        return delta.days
+        # return delta.days if delta.days > 0 else 1
+        return max(delta.days, 1)  # Ensure the result is at least 1 to avoid division by zero
 
 
 class StraightLine(Init):

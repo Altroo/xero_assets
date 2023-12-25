@@ -4519,3 +4519,4 @@ Traceback (most recent call last):
     raise TypeError(f'Object of type {o.__class__.__name__} '
 TypeError: Object of type AssetType is not JSON serializable
 "GET /fixed-assets/asset-dispose-list/ HTTP/1.1" 500 111484
+Not Found: /favicon.ico

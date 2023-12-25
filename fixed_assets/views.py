@@ -703,3 +703,10 @@ class ListAssetsDisposedView(ListAPIView, PageNumberPagination):
         if page is not None:
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
+
+
+class AssetsUndisposeView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, *args, **kwargs):
+        pass
