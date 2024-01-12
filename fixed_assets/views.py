@@ -17,7 +17,7 @@ from .serializers import (AssetSettingSerializer, AssetTypeSerializer, AssetsSer
                           AssetTypeListSerializer, CalculatedDepreciationSerializer,
                           AssetsGetSerializer, DisposedAssetsSerializer, AssetsDisposedListSerializer)
 from .models import AssetSetting, AssetType, Asset, CalculatedDepreciation, DisposedAsset
-from .utils import StraightLine, FullDepreciation, DecliningBalanceBy100Or150Or200, DisposeAsset
+from .utils import StraightLine, FullDepreciation, DecliningBalanceBy100Or150Or200, DisposeAsset2
 
 
 class AssetSettingsView(APIView):
@@ -163,82 +163,142 @@ class AssetTypesView(APIView, PageNumberPagination):
 class AssetsView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
+    # @staticmethod
+    # def post(request, *args, **kwargs):
+    #     user_pk: int = request.user.pk
+    #     asset_name: str = request.data.get('asset_name')
+    #     asset_number: str = request.data.get('asset_number')
+    #     purchase_date: str = request.data.get('purchase_date')
+    #     purchase_price: float = request.data.get('purchase_price')
+    #     warranty_expiry: str = request.data.get('warranty_expiry')
+    #     serial_number: str = request.data.get('serial_number')
+    #     asset_type: int = request.data.get('asset_type_pk')
+    #     region: str = request.data.get('region')
+    #     description: str = request.data.get('description')
+    #     depreciation_start_date: str = request.data.get('depreciation_start_date')
+    #     cost_limit: float = request.data.get('cost_limit')
+    #     residual_value: float = request.data.get('residual_value')
+    #     depreciation_method: str = request.data.get('depreciation_method')
+    #     averaging_method: str = request.data.get('averaging_method')
+    #     rate: Union[float, None] = request.data.get('rate')
+    #     effective_life: Union[int, None] = request.data.get('effective_life')
+    #     # Save as draft or register
+    #     asset_status: str = request.data.get('asset_status')
+    #     data = {
+    #         'user': user_pk,
+    #         'asset_name': asset_name,
+    #         'asset_number': asset_number,
+    #         'purchase_date': purchase_date,
+    #         'purchase_price': float(purchase_price) if purchase_price else None,
+    #         'warranty_expiry': warranty_expiry,
+    #         'serial_number': serial_number,
+    #         'asset_type': asset_type,
+    #         'region': region,
+    #         'description': description,
+    #         'depreciation_start_date': depreciation_start_date,
+    #         'cost_limit': float(cost_limit) if cost_limit else None,
+    #         'residual_value': float(residual_value) if residual_value else None,
+    #         'depreciation_method': depreciation_method,
+    #         'averaging_method': averaging_method,
+    #         'rate': float(rate) if rate else None,
+    #         'effective_life': float(effective_life) if effective_life else None,
+    #         'asset_status': asset_status,
+    #     }
+    #     serializer: AssetsSerializer = AssetsSerializer(data=data)
+    #     if serializer.is_valid():
+    #         if depreciation_method == 'ST':
+    #             book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
+    #         elif depreciation_method in ['100', '150', '200']:
+    #             book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
+    #                                              .calculate_depreciation())
+    #         elif depreciation_method == 'FD':
+    #             book_value: Union[float, int] = FullDepreciation(data).calculate_depreciation()
+    #         else:
+    #             book_value: Union[float, int] = 0
+    #         # Only if asset is registered
+    #         if asset_status == 'RE':
+    #             new_book_value: float = int(data.get('purchase_price')) - book_value
+    #             date_object: date = datetime.strptime(data.get('depreciation_start_date'), '%Y-%m-%d').date()
+    #             last_month_day: int = monthrange(date_object.year, date_object.month)[1]
+    #             last_date: date = date(date_object.year, date_object.month, last_month_day)
+    #             data: Dict[str, Union[int, str, float, None]] = {
+    #                 **data,
+    #                 'book_value': new_book_value,
+    #             }
+    #             asset = serializer.save()
+    #             calculated_depreciation_serializer: CalculatedDepreciationSerializer = (
+    #                 CalculatedDepreciationSerializer(data={
+    #                     'asset': asset.pk,
+    #                     'depreciation_of': book_value,
+    #                     'depreciation_date': last_date
+    #                 }))
+    #             asset = Asset.objects.get(pk=asset.pk)
+    #             asset.book_value = new_book_value
+    #             asset.save()
+    #             if calculated_depreciation_serializer.is_valid():
+    #                 calculated_depreciation_serializer.save()
+    #                 return Response(data=data, status=status.HTTP_200_OK)
+    #             raise ValidationError(calculated_depreciation_serializer.errors)
+    #     raise ValidationError(serializer.errors)
+
     @staticmethod
     def post(request, *args, **kwargs):
         user_pk: int = request.user.pk
-        asset_name: str = request.data.get('asset_name')
-        asset_number: str = request.data.get('asset_number')
-        purchase_date: str = request.data.get('purchase_date')
-        purchase_price: float = request.data.get('purchase_price')
-        warranty_expiry: str = request.data.get('warranty_expiry')
-        serial_number: str = request.data.get('serial_number')
-        asset_type: int = request.data.get('asset_type_pk')
-        region: str = request.data.get('region')
-        description: str = request.data.get('description')
-        depreciation_start_date: str = request.data.get('depreciation_start_date')
-        cost_limit: float = request.data.get('cost_limit')
-        residual_value: float = request.data.get('residual_value')
-        depreciation_method: str = request.data.get('depreciation_method')
-        averaging_method: str = request.data.get('averaging_method')
-        rate: Union[float, None] = request.data.get('rate')
-        effective_life: Union[int, None] = request.data.get('effective_life')
-        # Save as draft or register
-        asset_status: str = request.data.get('asset_status')
         data = {
             'user': user_pk,
-            'asset_name': asset_name,
-            'asset_number': asset_number,
-            'purchase_date': purchase_date,
-            'purchase_price': float(purchase_price) if purchase_price else None,
-            'warranty_expiry': warranty_expiry,
-            'serial_number': serial_number,
-            'asset_type': asset_type,
-            'region': region,
-            'description': description,
-            'depreciation_start_date': depreciation_start_date,
-            'cost_limit': float(cost_limit) if cost_limit else None,
-            'residual_value': float(residual_value) if residual_value else None,
-            'depreciation_method': depreciation_method,
-            'averaging_method': averaging_method,
-            'rate': float(rate) if rate else None,
-            'effective_life': float(effective_life) if effective_life else None,
-            'asset_status': asset_status,
+            'asset_name': request.data.get('asset_name'),
+            'asset_number': request.data.get('asset_number'),
+            'purchase_date': request.data.get('purchase_date'),
+            'purchase_price': float(request.data.get('purchase_price')) if request.data.get('purchase_price') else None,
+            'warranty_expiry': request.data.get('warranty_expiry'),
+            'serial_number': request.data.get('serial_number'),
+            'asset_type': request.data.get('asset_type_pk'),
+            'region': request.data.get('region'),
+            'description': request.data.get('description'),
+            'depreciation_start_date': request.data.get('depreciation_start_date'),
+            'cost_limit': float(request.data.get('cost_limit')) if request.data.get('cost_limit') else None,
+            'residual_value': float(request.data.get('residual_value')) if request.data.get('residual_value') else None,
+            'depreciation_method': request.data.get('depreciation_method'),
+            'averaging_method': request.data.get('averaging_method'),
+            'rate': float(request.data.get('rate')) if request.data.get('rate') else None,
+            'effective_life': float(request.data.get('effective_life')) if request.data.get('effective_life') else None,
+            'asset_status': request.data.get('asset_status'),
         }
         serializer: AssetsSerializer = AssetsSerializer(data=data)
         if serializer.is_valid():
-            if depreciation_method == 'ST':
-                book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
-            elif depreciation_method in ['100', '150', '200']:
-                book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
-                                                 .calculate_depreciation())
-            elif depreciation_method == 'FD':
-                book_value: Union[float, int] = FullDepreciation(data).calculate_depreciation()
-            else:
-                book_value: Union[float, int] = 0
-            # Only if asset is registered
-            if asset_status == 'RE':
-                new_book_value: float = int(data.get('purchase_price')) - book_value
-                date_object: date = datetime.strptime(data.get('depreciation_start_date'), '%Y-%m-%d').date()
-                last_month_day: int = monthrange(date_object.year, date_object.month)[1]
-                last_date: date = date(date_object.year, date_object.month, last_month_day)
-                data: Dict[str, Union[int, str, float, None]] = {
-                    **data,
-                    'book_value': new_book_value,
-                }
+            depreciation_method = data['depreciation_method']
+            book_value = 0
+
+            if depreciation_method in ['ST', '100', '150', '200', 'FD']:
+                if depreciation_method == 'ST':
+                    book_value = StraightLine(data).calculate_depreciation()
+                elif depreciation_method in ['100', '150', '200']:
+                    book_value = DecliningBalanceBy100Or150Or200(data).calculate_depreciation()
+                elif depreciation_method == 'FD':
+                    book_value = FullDepreciation(data).calculate_depreciation()
+
+            if data['asset_status'] == 'RE':
+                new_book_value = data['purchase_price'] - book_value
+                depreciation_start_date = datetime.strptime(data['depreciation_start_date'], '%Y-%m-%d').date()
+                last_month_day = monthrange(depreciation_start_date.year, depreciation_start_date.month)[1]
+                last_date = date(depreciation_start_date.year, depreciation_start_date.month, last_month_day)
+                data['book_value'] = new_book_value
+
                 asset = serializer.save()
-                calculated_depreciation_serializer: CalculatedDepreciationSerializer = (
-                    CalculatedDepreciationSerializer(data={
-                        'asset': asset.pk,
-                        'depreciation_of': book_value,
-                        'depreciation_date': last_date
-                    }))
-                asset = Asset.objects.get(pk=asset.pk)
                 asset.book_value = new_book_value
                 asset.save()
+
+                calculated_depreciation_serializer = CalculatedDepreciationSerializer(data={
+                    'asset': asset.pk,
+                    'depreciation_of': book_value,
+                    'depreciation_date': last_date
+                })
+
                 if calculated_depreciation_serializer.is_valid():
                     calculated_depreciation_serializer.save()
                     return Response(data=data, status=status.HTTP_200_OK)
                 raise ValidationError(calculated_depreciation_serializer.errors)
+
         raise ValidationError(serializer.errors)
 
     @staticmethod
@@ -345,12 +405,11 @@ class AssetsView(APIView):
         asset_pk: Union[int, str] = request.data.get('asset_pk')
         try:
             asset = Asset.objects.get(pk=asset_pk, user=user)
-            if asset.asset_type == 'RE':
+            if asset.asset_status == 'RE':
                 serializer: AssetsGetSerializer = AssetsGetSerializer(asset)
                 return Response(data=serializer.data, status=status.HTTP_200_OK)
             else:
-                raise NotFound()
-                # return Response(status=status.HTTP_404_NOT_FOUND)
+                raise NotFound('Asset for this user do not exist.')
         except Asset.DoesNotExist:
             raise NotFound('Asset for this user do not exist.')
 
@@ -584,27 +643,85 @@ class AssetsRollBackDepreciationView(APIView):
 class AssetsDisposeView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
+    # @staticmethod
+    # def get(request, *args, **kwargs):
+    #     user = request.user
+    #     dispose_date: str = request.data.get('dispose_date')
+    #     # dispose_date_obj: datetime = datetime.strptime(dispose_date, "%Y-%m-%d")
+    #     sale_proceeds: float = request.data.get('sale_proceeds')
+    #     sale_proceeds_account_pk: int = request.data.get('sale_proceeds_account_pk')
+    #     depreciation_this_year: str = request.data.get('depreciation_this_year')
+    #     asset_pk: Union[int, str] = request.data.get('asset_pk')
+    #     data: Dict[str, Union[float, str]] = {}
+    #     try:
+    #         asset: Union[QuerySet, Asset, CalculatedDepreciation] = (
+    #             Asset.objects.prefetch_related('calculated_depreciation_asset')
+    #             .get(user=user, pk=asset_pk))
+    #         accumulated_depreciation: Union[float, str] = ((CalculatedDepreciation.objects.filter(asset=asset_pk)
+    #                                                         .aggregate(Sum('depreciation_of')))
+    #                                                        .get('depreciation_of__sum'))
+    #         # AD = All depreciation
+    #         if depreciation_this_year == 'AD':
+    #             depreciation_date: str = request.data.get('depreciation_date')
+    #             dispose_asset = DisposeAsset2({
+    #                 'user': user,
+    #                 'dispose_date': dispose_date,
+    #                 'sale_proceeds': sale_proceeds,
+    #                 'proceeds_account_pk': sale_proceeds_account_pk,
+    #                 'depreciation_date': depreciation_date,
+    #                 'asset_pk': asset_pk
+    #             })
+    #             data = dispose_asset.calculate_journal()
+    #             return Response(data, status=status.HTTP_200_OK)
+    #         # ND = No depreciation
+    #         else:
+    #             purchase_date: str = '{}/{}/{}'.format(asset.purchase_date.day, asset.purchase_date.month,
+    #                                                    asset.purchase_date.year)
+    #             depreciated_to_obj: date = (CalculatedDepreciation.objects.filter(asset=asset_pk)
+    #                                         .latest('depreciation_date').depreciation_date)
+    #             depreciated_to: str = '{}/{}/{}'.format(depreciated_to_obj.day, depreciated_to_obj.month,
+    #                                                     depreciated_to_obj.year)
+    #             reversal_of_depreciation: Union[float, str] = ((CalculatedDepreciation.objects.filter(asset=asset_pk)
+    #                                                             .filter(depreciation_date__gte=asset.purchase_date,
+    #                                                                     depreciation_date__lte=depreciated_to_obj)
+    #                                                             .aggregate(Sum('depreciation_of')))
+    #                                                            .get('depreciation_of__sum'))
+    #             data['cost'] = asset.purchase_price
+    #             data['current_accumulated_depreciation'] = accumulated_depreciation
+    #             data['reversal_of_depreciation_date'] = '{} to {}'.format(purchase_date, depreciated_to)
+    #             data['reversal_of_depreciation_value'] = reversal_of_depreciation
+    #             data['sale_proceeds'] = float(sale_proceeds)
+    #             if asset.purchase_price == float(sale_proceeds):
+    #                 return Response(data, status=status.HTTP_200_OK)
+    #             elif asset.purchase_price < float(sale_proceeds):
+    #                 data['capital_gain'] = float(sale_proceeds) - asset.purchase_price
+    #                 return Response(data, status=status.HTTP_200_OK)
+    #             else:
+    #                 data['loss_on_disposal'] = asset.purchase_price - float(sale_proceeds)
+    #                 return Response(data, status=status.HTTP_200_OK)
+    #     except Asset.DoesNotExist:
+    #         raise NotFound('Asset for this user do not exist.')
+
     @staticmethod
     def get(request, *args, **kwargs):
         user = request.user
-        dispose_date: str = request.data.get('dispose_date')
-        # dispose_date_obj: datetime = datetime.strptime(dispose_date, "%Y-%m-%d")
-        sale_proceeds: float = request.data.get('sale_proceeds')
-        sale_proceeds_account_pk: int = request.data.get('sale_proceeds_account_pk')
-        depreciation_this_year: str = request.data.get('depreciation_this_year')
-        asset_pk: Union[int, str] = request.data.get('asset_pk')
-        data: Dict[str, Union[float, str]] = {}
+        asset_pk = request.data.get('asset_pk')
+
         try:
-            asset: Union[QuerySet, Asset, CalculatedDepreciation] = (
-                Asset.objects.prefetch_related('calculated_depreciation_asset')
-                .get(user=user, pk=asset_pk))
-            accumulated_depreciation: Union[float, str] = ((CalculatedDepreciation.objects.filter(asset=asset_pk)
-                                                            .aggregate(Sum('depreciation_of')))
-                                                           .get('depreciation_of__sum'))
-            # AD = All depreciation
+            asset = Asset.objects.prefetch_related('calculated_depreciation_asset').get(user=user, pk=asset_pk)
+        except Asset.DoesNotExist:
+            return Response({'detail': 'Asset for this user does not exist.'}, status=status.HTTP_404_NOT_FOUND)
+
+        dispose_date = request.data.get('dispose_date')
+        sale_proceeds = request.data.get('sale_proceeds')
+        sale_proceeds_account_pk = request.data.get('sale_proceeds_account_pk')
+        depreciation_this_year = request.data.get('depreciation_this_year')
+        # data: Dict[str, Union[float, str]] = {}
+
+        try:
             if depreciation_this_year == 'AD':
-                depreciation_date: str = request.data.get('depreciation_date')
-                dispose_asset = DisposeAsset({
+                depreciation_date = request.data.get('depreciation_date')
+                dispose_asset = DisposeAsset2({
                     'user': user,
                     'dispose_date': dispose_date,
                     'sale_proceeds': sale_proceeds,
@@ -613,35 +730,38 @@ class AssetsDisposeView(APIView):
                     'asset_pk': asset_pk
                 })
                 data = dispose_asset.calculate_journal()
-                return Response(data, status=status.HTTP_200_OK)
-            # ND = No depreciation
             else:
-                purchase_date: str = '{}/{}/{}'.format(asset.purchase_date.day, asset.purchase_date.month,
-                                                       asset.purchase_date.year)
-                depreciated_to_obj: date = (CalculatedDepreciation.objects.filter(asset=asset_pk)
-                                            .latest('depreciation_date').depreciation_date)
-                depreciated_to: str = '{}/{}/{}'.format(depreciated_to_obj.day, depreciated_to_obj.month,
-                                                        depreciated_to_obj.year)
-                reversal_of_depreciation: Union[float, str] = ((CalculatedDepreciation.objects.filter(asset=asset_pk)
-                                                                .filter(depreciation_date__gte=asset.purchase_date,
-                                                                        depreciation_date__lte=depreciated_to_obj)
-                                                                .aggregate(Sum('depreciation_of')))
-                                                               .get('depreciation_of__sum'))
-                data['cost'] = asset.purchase_price
-                data['current_accumulated_depreciation'] = accumulated_depreciation
-                data['reversal_of_depreciation_date'] = '{} to {}'.format(purchase_date, depreciated_to)
-                data['reversal_of_depreciation_value'] = reversal_of_depreciation
-                data['sale_proceeds'] = float(sale_proceeds)
+                accumulated_depreciation = CalculatedDepreciation.objects.filter(asset=asset_pk) \
+                    .aggregate(Sum('depreciation_of')).get('depreciation_of__sum')
+
+                purchase_date = asset.purchase_date.strftime('%Y-%m-%d')
+                depreciated_to_obj = CalculatedDepreciation.objects.filter(asset=asset_pk).latest('depreciation_date') \
+                    .depreciation_date
+                depreciated_to = depreciated_to_obj.strftime('%Y-%m-%d')
+
+                reversal_of_depreciation = CalculatedDepreciation.objects.filter(asset=asset_pk) \
+                    .filter(depreciation_date__gte=asset.purchase_date, depreciation_date__lte=depreciated_to_obj) \
+                    .aggregate(Sum('depreciation_of')).get('depreciation_of__sum')
+
+                data = {
+                    'cost': asset.purchase_price,
+                    'current_accumulated_depreciation': accumulated_depreciation,
+                    'reversal_of_depreciation_date': f'{purchase_date} to {depreciated_to}',
+                    'reversal_of_depreciation_value': reversal_of_depreciation,
+                    'sale_proceeds': float(sale_proceeds)
+                }
+
                 if asset.purchase_price == float(sale_proceeds):
                     return Response(data, status=status.HTTP_200_OK)
                 elif asset.purchase_price < float(sale_proceeds):
                     data['capital_gain'] = float(sale_proceeds) - asset.purchase_price
-                    return Response(data, status=status.HTTP_200_OK)
                 else:
                     data['loss_on_disposal'] = asset.purchase_price - float(sale_proceeds)
-                    return Response(data, status=status.HTTP_200_OK)
-        except Asset.DoesNotExist:
-            raise NotFound('Asset for this user do not exist.')
+
+        except ValueError as e:
+            return Response({'detail': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(data, status=status.HTTP_200_OK)
 
     @staticmethod
     def post(request, *args, **kwargs):
@@ -708,5 +828,32 @@ class ListAssetsDisposedView(ListAPIView, PageNumberPagination):
 class AssetsUndisposeView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
-    def post(self, request, *args, **kwargs):
-        pass
+    @staticmethod
+    def post(request, *args, **kwargs):
+        user = request.user
+        asset_pk: Union[int, str] = request.data.get('asset_pk')
+        try:
+            asset = Asset.objects.get(pk=asset_pk, user=user)
+            asset.asset_status = 'RE'
+            asset.book_value = asset.purchase_price
+            asset.save()
+            CalculatedDepreciation.objects.filter(asset=asset).delete()
+            DisposedAsset.objects.filter(asset=asset).delete()
+            return Response(status=status.HTTP_200_OK)
+        except Asset.DoesNotExist:
+            raise NotFound('Asset for this user do not exist.')
+
+
+class AssetNumberView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    @staticmethod
+    def get(request, *args, **kwargs):
+        user = request.user
+        asset = Asset.objects.filter(user=user).latest('asset_number').asset_number
+        asset_number = int(asset.split('-')[1]) + 1
+        data = {
+            "asset_prefix": asset.split('-')[0],
+            "asset_number": "{:04d}".format(asset_number)
+        }
+        return Response(data=data, status=status.HTTP_200_OK)

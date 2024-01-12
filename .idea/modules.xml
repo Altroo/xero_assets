@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/OneDrive/Bureau/xero-assets-front/.idea/xero-assets-front.iml" filepath="$USER_HOME$/OneDrive/Bureau/xero-assets-front/.idea/xero-assets-front.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/xero_assets.iml" filepath="$PROJECT_DIR$/.idea/xero_assets.iml" />
     </modules>
   </component>

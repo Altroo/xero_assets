@@ -4520,3 +4520,297 @@ Traceback (most recent call last):
 TypeError: Object of type AssetType is not JSON serializable
 "GET /fixed-assets/asset-dispose-list/ HTTP/1.1" 500 111484
 Not Found: /favicon.ico
+Bad Request: /fixed-assets/assets/
+"POST /fixed-assets/assets/ HTTP/1.1" 400 65
+Not Found: /favicon.ico
+Internal Server Error: /fixed-assets/asset-dispose/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 615, in get
+    data = dispose_asset.calculate_journal()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 633, in calculate_journal
+    if self.get_depreciation_date() > self.get_last_depreciation_date():
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 477, in get_depreciation_date
+    return datetime.strptime(self.depreciation_date, "%Y-%m-%d")
+  File "C:\Users\scorp\AppData\Local\Programs\Python\Python38\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Users\scorp\AppData\Local\Programs\Python\Python38\lib\_strptime.py", line 534, in _strptime
+    julian = datetime_date(year, month, day).toordinal() - \
+ValueError: day is out of range for month
+"GET /fixed-assets/asset-dispose/ HTTP/1.1" 500 122135
+Bad Request: /fixed-assets/assets/
+"POST /fixed-assets/assets/ HTTP/1.1" 400 65
+Not Found: /favicon.ico
+Bad Request: /fixed-assets/asset-dispose/
+"GET /fixed-assets/asset-dispose/ HTTP/1.1" 400 42
+Not Found: /favicon.ico
+Internal Server Error: /fixed-assets/asset-run-depreciation/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 597, in post
+    book_value: Union[float, int] = StraightLine(data).calculate_depreciation()
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 131, in calculate_depreciation
+    cost_limit: Union[float, int] = self.cost_limit if self.cost_limit > 0 else self.purchase_price
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+"POST /fixed-assets/asset-run-depreciation/ HTTP/1.1" 500 106880
+Internal Server Error: /fixed-assets/asset-undispose/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 839, in post
+    asset.calculated_depreciation_asset.delete()
+AttributeError: 'RelatedManager' object has no attribute 'delete'
+"POST /fixed-assets/asset-undispose/ HTTP/1.1" 500 99038
+Internal Server Error: /fixed-assets/asset-undispose/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"POST /fixed-assets/asset-undispose/ HTTP/1.1" 500 86219
+Internal Server Error: /fixed-assets/asset-run-depreciation/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 599, in post
+    book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 188, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price / self.effective_life) / 12) * declining_balance
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+"POST /fixed-assets/asset-run-depreciation/ HTTP/1.1" 500 107871
+Internal Server Error: /fixed-assets/asset-run-depreciation/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 599, in post
+    book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 188, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price / self.effective_life) / 12) * declining_balance
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+"POST /fixed-assets/asset-run-depreciation/ HTTP/1.1" 500 106880
+Internal Server Error: /fixed-assets/asset-run-depreciation/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 599, in post
+    book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 188, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price / self.effective_life) / 12) * declining_balance
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+"POST /fixed-assets/asset-run-depreciation/ HTTP/1.1" 500 106880
+Internal Server Error: /fixed-assets/asset-run-depreciation/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 599, in post
+    book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 185, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price / self.effective_life) / 12) * declining_balance
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+"POST /fixed-assets/asset-run-depreciation/ HTTP/1.1" 500 106880
+Internal Server Error: /fixed-assets/asset-run-depreciation/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 599, in post
+    book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 185, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price / self.effective_life) / 12) * declining_balance
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+"POST /fixed-assets/asset-run-depreciation/ HTTP/1.1" 500 107871
+Internal Server Error: /fixed-assets/asset-run-depreciation/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 599, in post
+    book_value: Union[float, int] = (DecliningBalanceBy100Or150Or200(data)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\utils.py", line 185, in calculate_depreciation
+    result: Union[int, float] = ((self.purchase_price / self.effective_life) / 12) * declining_balance
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+"POST /fixed-assets/asset-run-depreciation/ HTTP/1.1" 500 107871
+Not Found: /favicon.ico
+Not Found: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 404 46
+Not Found: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 404 46
+Not Found: /favicon.ico
+Not Found: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 404 23
+Not Found: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 404 23
+Not Found: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 404 23
+Not Found: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 404 23
+Not Found: /fixed-assets/asset-undispose/
+"POST /fixed-assets/asset-undispose/ HTTP/1.1" 404 46
+Bad Request: /fixed-assets/assets/
+"POST /fixed-assets/assets/ HTTP/1.1" 400 65
+Not Found: /
+"GET / HTTP/1.1" 404 2505
+Not Found: /favicon.ico
+Not Found: /fixed-assets/assets/
+"GET /fixed-assets/assets/ HTTP/1.1" 404 23
+Internal Server Error: /fixed-assets/asset-number/
+Traceback (most recent call last):
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\fixed_assets\views.py", line 853, in get
+    asset = Asset.objects.filter(user=user).latest().asset_number
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\db\models\query.py", line 1045, in latest
+    return self.reverse()._earliest(*fields)
+  File "C:\Users\scorp\PycharmProjects\xero_assets\venv\lib\site-packages\django\db\models\query.py", line 1020, in _earliest
+    raise ValueError(
+ValueError: earliest() and latest() require either fields as positional arguments or 'get_latest_by' in the model's Meta.
+"GET /fixed-assets/asset-number/ HTTP/1.1" 500 107610
